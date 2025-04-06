@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZALL :: Cybernetic CV</title>
+    <style>
+        :root {
+            --primary: #00f0ff;
+            --secondary: #ff00aa;
+            --bg: #0a0a14;
+            --card: #161624;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+        }
+        body {
+            background-color: var(--bg);
+            color: white;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        .terminal-bar {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            height: 30px;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(0,240,255,0.3);
+        }
+        .tagline {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        .contact-card {
+            background: var(--card);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary);
+            transition: transform 0.3s;
+        }
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+        .contact-card h3 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        section {
+            margin-bottom: 3rem;
+        }
+        h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            position: relative;
+            display: inline-block;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .skill-category {
+            background: var(--card);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-top: 2px solid var(--secondary);
+        }
+        .skill-category h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        .skill-item {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .skill-item::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+        .project {
+            background: var(--card);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 3px solid var(--primary);
+        }
+        .project h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 0.8rem 0;
+        }
+        .tag {
+            background: rgba(0,240,255,0.1);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        .typing-animation {
+            border-right: 2px solid var(--primary);
+            animation: blink 1s step-end infinite;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary) }
+        }
+        .code-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+        .glow {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 5px var(--primary); }
+            to { text-shadow: 0 0 15px var(--primary), 0 0 20px var(--secondary); }
+        }
+        .language-section {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px dashed var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal-bar">zall_cv.terminal -- 100% professional --</div>
+    
+    <div class="code-bg" id="codeBackground"></div>
+    
+    <div class="container">
+        <!-- ENGLISH VERSION -->
+        <header>
+            <h1 class="glow">ZALL</h1>
+            <div class="tagline typing-animation" id="typewriter">Web Engineer | OSINT Enthusiast | Problem Solver</div>
+        </header>
+        
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h3>📍 Location</h3>
+                <p>Balikpapan, East Kalimantan</p>
+            </div>
+            <div class="contact-card">
+                <h3>📱 WhatsApp</h3>
+                <p>08xxxxxxxxxx</p>
+            </div>
+            <div class="contact-card">
+                <h3>📧 Email</h3>
+                <p>zall@email.com</p>
+            </div>
+            <div class="contact-card">
+                <h3>🌐 Portfolio</h3>
+                <p>classtungga.dev</p>
+            </div>
+        </div>
+        
+        <section>
+            <h2>PROFILE</h2>
+            <div class="profile-content">
+                <p>I am a <strong>Web Engineer</strong> focused on developing modern, responsive, and user-friendly websites. I have experience building web systems from scratch, including interface design, feature logic, and user interactions.</p>
+                <br>
+                <p>I believe the web isn't just about appearance but also about experience. Therefore, I always strive to create websites that are not only attractive but also functional and efficient, especially for mobile users.</p>
+                <br>
+                <p>I also have an interest in <strong>OSINT (Open Source Intelligence)</strong> and have developed several basic tools for account identification purposes, used ethically to help people recover lost access.</p>
+            </div>
+        </section>
+        
+        <section>
+            <h2>TECHNICAL SKILLS</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Frontend Development</h3>
+                    <div class="skill-item">HTML5, CSS3, TailwindCSS</div>
+                    <div class="skill-item">JavaScript (basic-intermediate)</div>
+                    <div class="skill-item">Mobile-first design</div>
+                    <div class="skill-item">Interactive UI/UX & animations</div>
+                </div>
+                <div class="skill-category">
+                    <h3>Backend Development</h3>
+                    <div class="skill-item">PHP, Node.js (basic)</div>
+                    <div class="skill-item">Firebase (when needed)</div>
+                    <div class="skill-item">Database-less login systems</div>
+                    <div class="skill-item">Direct server data processing</div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Workflow</h3>
+                    <div class="skill-item">Git & GitHub</div>
+                    <div class="skill-item">Vercel, Netlify (free hosting)</div>
+                    <div class="skill-item">Termux (Android exploration)</div>
+                    <div class="skill-item">Clean, minimalist web design</div>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>PROJECT EXPERIENCE</h2>
+            <div class="project">
+                <h3>ZALLSTORE REAL</h3>
+                <div class="project-tags">
+                    <span class="tag">E-commerce</span>
+                    <span class="tag">Game Top-up</span>
+                    <span class="tag">Mobile-first</span>
+                </div>
+                <p>Website service for game top-up, clothing sales, food, and transaction services.</p>
+                <p><strong>Features:</strong> Image slider, database-less login, stock posting + account status, logo animation, bottom navigation for mobile, bank transfer top-up system.</p>
+            </div>
+            <div class="project">
+                <h3>ZALLKALTIM</h3>
+                <div class="project-tags">
+                    <span class="tag">Local Business</span>
+                    <span class="tag">Minimalist Design</span>
+                </div>
+                <p>Local product ordering information site with black-red minimalist design. Focus on clear information presentation and ordering contacts.</p>
+            </div>
+            <div class="project">
+                <h3>OSINT Tool - WhatsApp Number</h3>
+                <div class="project-tags">
+                    <span class="tag">OSINT</span>
+                    <span class="tag">Account Recovery</span>
+                    <span class="tag">Ethical Tool</span>
+                </div>
+                <p>Web for legal phone number information identification (WA account name, related social media indications). Created as a tool to help recover stolen or lost accounts.</p>
+            </div>
+        </section>
+        
+        <section>
+            <h2>CAREER TARGET</h2>
+            <div class="profile-content">
+                <p>I want to join a team or project that values creativity, learning speed, and appropriate technology utilization.</p>
+                <br>
+                <p>I'm open to freelance opportunities, startup collaborations, or permanent roles as a web developer.</p>
+            </div>
+        </section>
+
+        <!-- INDONESIAN VERSION -->
+        <div class="language-section">
+            <header>
+                <h1 class="glow">ZALL</h1>
+                <div class="tagline">Web Engineer | Pencinta OSINT | Pemecah Masalah</div>
+            </header>
+            
+            <section>
+                <h2>PROFIL</h2>
+                <div class="profile-content">
+                    <p>Saya seorang <strong>Web Engineer</strong> yang fokus pada pengembangan website modern, responsif, dan ramah pengguna. Saya memiliki pengalaman membangun sistem web dari awal, termasuk desain antarmuka, logika fitur, dan interaksi pengguna.</p>
+                    <br>
+                    <p>Saya percaya bahwa web bukan hanya tentang tampilan tetapi juga pengalaman. Oleh karena itu, saya selalu berusaha menciptakan web yang tidak hanya menarik tetapi juga fungsional dan efisien, terutama untuk pengguna mobile.</p>
+                    <br>
+                    <p>Saya juga tertarik pada bidang <strong>OSINT (Open Source Intelligence)</strong> dan telah mengembangkan beberapa alat dasar untuk identifikasi akun, digunakan secara etis untuk membantu pemulihan akses yang hilang.</p>
+                </div>
+            </section>
+            
+            <section>
+                <h2>KEAHLIAN TEKNIS</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Pengembangan Frontend</h3>
+                        <div class="skill-item">HTML5, CSS3, TailwindCSS</div>
+                        <div class="skill-item">JavaScript (dasar-menengah)</div>
+                        <div class="skill-item">Desain mobile-first</div>
+                        <div class="skill-item">UI/UX interaktif & animasi</div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Pengembangan Backend</h3>
+                        <div class="skill-item">PHP, Node.js (dasar)</div>
+                        <div class="skill-item">Firebase (jika diperlukan)</div>
+                        <div class="skill-item">Sistem login tanpa database</div>
+                        <div class="skill-item">Pengolahan data langsung via server</div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Alat & Alur Kerja</h3>
+                        <div class="skill-item">Git & GitHub</div>
+                        <div class="skill-item">Vercel, Netlify (hosting gratis)</div>
+                        <div class="skill-item">Termux (eksplorasi Android)</div>
+                        <div class="skill-item">Desain web minimalis bersih</div>
+                    </div>
+                </div>
+            </section>
+            
+            <section>
+                <h2>PENGALAMAN PROYEK</h2>
+                <div class="project">
+                    <h3>ZALLSTORE REAL</h3>
+                    <div class="project-tags">
+                        <span class="tag">E-commerce</span>
+                        <span class="tag">Top-up Game</span>
+                        <span class="tag">Mobile-first</span>
+                    </div>
+                    <p>Layanan website untuk top-up game, penjualan pakaian, makanan, dan jasa transaksi.</p>
+                    <p><strong>Fitur:</strong> Slider gambar, login tanpa database, posting stok + status akun, animasi logo, navigasi bawah untuk mobile, sistem top-up transfer bank.</p>
+                </div>
+                <div class="project">
+                    <h3>ZALLKALTIM</h3>
+                    <div class="project-tags">
+                        <span class="tag">Bisnis Lokal</span>
+                        <span class="tag">Desain Minimalis</span>
+                    </div>
+                    <p>Situs informasi pemesanan produk lokal dengan desain minimalis hitam-merah. Fokus pada penyajian informasi jelas dan kontak pemesanan.</p>
+                </div>
+                <div class="project">
+                    <h3>Alat OSINT - Nomor WhatsApp</h3>
+                    <div class="project-tags">
+                        <span class="tag">OSINT</span>
+                        <span class="tag">Pemulihan Akun</span>
+                        <span class="tag">Alat Etis</span>
+                    </div>
+                    <p>Web untuk identifikasi informasi nomor HP secara legal (nama akun WA, indikasi media sosial terkait). Dibuat sebagai alat bantu pemulihan akun yang dicuri atau hilang.</p>
+                </div>
+            </section>
+            
+            <section>
+                <h2>TARGET KARIR</h2>
+                <div class="profile-content">
+                    <p>Saya ingin bergabung dengan tim atau proyek yang menghargai kreativitas, kecepatan belajar, dan pemanfaatan teknologi yang tepat guna.</p>
+                    <br>
+                    <p>Saya terbuka untuk peluang freelance, kolaborasi startup, atau peran tetap sebagai pengembang web.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Typewriter effect
+        const phrases = [
+            "Web Engineer",
+            "OSINT Enthusiast",
+            "Problem Solver",
+            "UI/UX Designer",
+            "Tech Innovator"
+        ];
+        let currentPhrase = 0;
+        let currentChar = 0;
+        let isDeleting = false;
+        const typewriter = document.getElementById('typewriter');
+        
+        function typeWriter() {
+            const fullTxt = phrases[currentPhrase];
+            
+            if (isDeleting) {
+                typewriter.textContent = fullTxt.substring(0, currentChar - 1);
+                currentChar--;
+            } else {
+                typewriter.textContent = fullTxt.substring(0, currentChar + 1);
+                currentChar++;
+            }
+            
+            if (!isDeleting && currentChar === fullTxt.length) {
+                isDeleting = true;
+                setTimeout(typeWriter, 1500);
+            } else if (isDeleting && currentChar === 0) {
+                isDeleting = false;
+                currentPhrase = (currentPhrase + 1) % phrases.length;
+                setTimeout(typeWriter, 500);
+            } else {
+                setTimeout(typeWriter, isDeleting ? 50 : 100);
+            }
+        }
+        
+        // Code background animation
+        const codeBg = document.getElementById('codeBackground');
+        const codeLines = [
+            "function developWebsite() {",
+            "  const skills = ['HTML', 'CSS', 'JS'];",
+            "  let project = new Project('ZALLSTORE');",
+            "  project.applyResponsiveDesign();",
+            "  project.optimizeForMobile();",
+            "  return project.deploy();",
+            "}",
+            "// OSINT Tool v1.3",
+            "async function identifyAccount(phone) {",
+            "  const result = await fetchAPI(phone);",
+            "  return result.socialMedia;",
+            "}",
+            "/* Keamanan siber utama */",
+            "const ethicalHacking = true;"
+        ];
+        
+        function createCodeBackground() {
+            let html = '';
+            for (let i = 0; i < 30; i++) {
+                const randomLine = codeLines[Math.floor(Math.random() * codeLines.length)];
+                const indent = ' '.repeat(Math.floor(Math.random() * 10));
+                const opacity = Math.random() * 0.5 + 0.1;
+                const color = `rgba(0, 240, 255, ${opacity})`;
+                const style = `color: ${color}; margin-left: ${Math.random() * 50}%;`;
+                html += `<div style="${style}">${indent}${randomLine}</div>`;
+            }
+            codeBg.innerHTML = html;
+        }
+        
+        // Initialize animations
+        window.onload = function() {
+            typeWriter();
+            createCodeBackground();
+            setInterval(createCodeBackground, 5000);
+        };
+    </script>
+</body>
+</html>
