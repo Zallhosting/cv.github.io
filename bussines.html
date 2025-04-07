@@ -3,101 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevStore - Jasa Pembuatan Website & Akun Premium</title>
+    <title>WebCraft Pro - Jasa Pembuatan Website Profesional</title>
     <style>
         :root {
-            --primary: #4285F4; /* Biru Google */
-            --secondary: #EA4335; /* Merah Google */
-            --dark: #202124; /* Abu-abu gelap */
-            --light: #E8EAED; /* Abu-abu muda */
-            --accent: #34A853; /* Hijau */
+            --primary: #D82E3A; /* Merah profesional */
+            --secondary: #2E5FD8; /* Biru profesional */
+            --dark: #1A1A2E; /* Dark blue */
+            --light: #F5F5F5; /* Light gray */
+            --accent: #30C5D2; /* Cyan */
         }
         
         body {
-            font-family: 'Roboto', 'Segoe UI', sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
             background-color: var(--dark);
-            color: var(--light);
+            color: #333;
+            line-height: 1.6;
             overflow-x: hidden;
         }
         
-        .code-bg {
+        .particles-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                linear-gradient(rgba(32, 33, 36, 0.9), rgba(32, 33, 36, 0.9)),
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><text x="0" y="50" font-family="monospace" font-size="10" fill="rgba(234,67,53,0.05)">&lt;kode&gt;while(hidup) { koding(); }&lt;/kode&gt;</text></svg>');
             z-index: -1;
-            animation: scrollCode 100s linear infinite;
+            background: linear-gradient(135deg, var(--dark) 0%, #16213E 100%);
         }
         
-        @keyframes scrollCode {
-            0% { background-position: 0 0; }
-            100% { background-position: 0 1000px; }
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0); opacity: 0; }
+            50% { opacity: 0.3; }
+            100% { transform: translateY(-1000px) translateX(500px); opacity: 0; }
         }
         
         header {
-            padding: 2rem;
+            padding: 3rem 2rem;
             text-align: center;
-            position: relative;
-            background: rgba(0,0,0,0.3);
-            backdrop-filter: blur(5px);
-            border-bottom: 1px solid rgba(234, 67, 53, 0.3);
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         
         .logo {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 700;
             background: linear-gradient(to right, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
-            animation: float 3s ease-in-out infinite;
-            font-family: 'Courier New', monospace;
-            text-transform: uppercase;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
         }
         
         .tagline {
-            font-size: 1.2rem;
-            margin-top: 1rem;
-            opacity: 0.8;
+            font-size: 1.3rem;
+            color: var(--light);
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
             animation: fadeIn 2s ease-out;
         }
         
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 0.8; transform: translateY(0); }
+            to { opacity: 0.9; transform: translateY(0); }
         }
         
         .menu-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            padding: 3rem;
             max-width: 1400px;
             margin: 0 auto;
         }
         
         .menu-item {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
+            background: white;
+            border-radius: 12px;
             overflow: hidden;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(66, 133, 244, 0.2);
-            animation: slideUp 0.5s ease-out forwards;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: relative;
+            animation: slideUp 0.6s ease-out forwards;
             opacity: 0;
-            transform: translateY(20px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transform: translateY(30px);
         }
         
         @keyframes slideUp {
@@ -105,17 +105,25 @@
         }
         
         .menu-item:hover {
-            transform: translateY(-5px) !important;
-            box-shadow: 0 15px 30px rgba(234, 67, 53, 0.2);
-            border-color: rgba(234, 67, 53, 0.5);
+            transform: translateY(-10px) !important;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
         }
         
         .menu-img {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
-            border-bottom: 2px solid var(--primary);
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
         }
         
         .menu-item:hover .menu-img {
@@ -123,29 +131,63 @@
         }
         
         .menu-content {
-            padding: 1.5rem;
+            padding: 2rem;
         }
         
         .menu-title {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: white;
-            font-weight: 500;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .menu-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
         }
         
         .menu-desc {
-            font-size: 0.9rem;
-            opacity: 0.8;
+            font-size: 1rem;
+            color: #666;
             margin-bottom: 1.5rem;
-            line-height: 1.5;
+            line-height: 1.7;
+        }
+        
+        .features {
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+        
+        .feature-item::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .price-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
         }
         
         .price {
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 1rem;
-            display: block;
+            color: var(--primary);
         }
         
         .btn {
@@ -153,289 +195,340 @@
             padding: 0.8rem 2rem;
             background: linear-gradient(to right, var(--primary), var(--secondary));
             color: white;
-            border-radius: 5px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
             font-size: 1rem;
-            text-align: center;
-            width: 100%;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(216, 46, 58, 0.3);
         }
         
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 7px 14px rgba(66, 133, 244, 0.3);
-        }
-        
-        .account-form {
-            display: none;
-            margin-top: 1.5rem;
-            animation: fadeInForm 0.5s ease-out;
-        }
-        
-        @keyframes fadeInForm {
-            from { opacity: 0; height: 0; }
-            to { opacity: 1; height: auto; }
-        }
-        
-        .form-group {
-            margin-bottom: 1rem;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        input, select {
-            width: 100%;
-            padding: 0.8rem;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 5px;
-            color: white;
-            font-family: inherit;
-        }
-        
-        input:focus, select:focus {
-            outline: none;
-            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(216, 46, 58, 0.4);
         }
         
         footer {
             text-align: center;
-            padding: 2rem;
-            margin-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem 2rem;
             background: rgba(0,0,0,0.3);
             backdrop-filter: blur(5px);
+            color: var(--light);
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
         
-        /* Animasi */
+        /* Animation delays */
         .menu-item:nth-child(1) { animation-delay: 0.1s; }
-        .menu-item:nth-child(2) { animation-delay: 0.3s; }
-        .menu-item:nth-child(3) { animation-delay: 0.5s; }
-        .menu-item:nth-child(4) { animation-delay: 0.7s; }
-        .menu-item:nth-child(5) { animation-delay: 0.9s; }
+        .menu-item:nth-child(2) { animation-delay: 0.2s; }
+        .menu-item:nth-child(3) { animation-delay: 0.3s; }
+        .menu-item:nth-child(4) { animation-delay: 0.4s; }
+        .menu-item:nth-child(5) { animation-delay: 0.5s; }
+        .menu-item:nth-child(6) { animation-delay: 0.6s; }
+        .menu-item:nth-child(7) { animation-delay: 0.7s; }
+        .menu-item:nth-child(8) { animation-delay: 0.8s; }
+        .menu-item:nth-child(9) { animation-delay: 0.9s; }
+        .menu-item:nth-child(10) { animation-delay: 1s; }
         
-        /* Responsif */
+        /* Responsive */
         @media (max-width: 768px) {
             .menu-container {
                 grid-template-columns: 1fr;
+                padding: 2rem 1rem;
+            }
+            
+            .logo {
+                font-size: 2.2rem;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
             }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="code-bg"></div>
+    <div class="particles-bg" id="particles-bg"></div>
     
     <header>
-        <div class="logo">DevStore</div>
-        <div class="tagline">Jasa Pembuatan Website Profesional & Akun Premium</div>
+        <div class="logo">WEBCRAFT PRO</div>
+        <div class="tagline">Jasa Pembuatan Website Profesional dengan Desain Premium dan Fitur Lengkap</div>
     </header>
     
     <div class="menu-container">
-        <!-- Layanan Website 1 -->
+        <!-- Layanan 1 -->
         <div class="menu-item">
-            <img src="https://via.placeholder.com/600x400/202124/4285F4?text=Website+Portfolio" alt="Website Portfolio" class="menu-img">
+            <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Website Portfolio" class="menu-img">
             <div class="menu-content">
-                <h3 class="menu-title">Website Portfolio Profesional</h3>
-                <p class="menu-desc">Tampilkan karya Anda dengan website portfolio yang menakjubkan. Desain responsif, animasi custom, dan integrasi CMS.</p>
-                <span class="price">Rp 1.500.000</span>
-                <button class="btn btn-order" data-service="Website Portfolio Profesional">Pesan Sekarang</button>
+                <h3 class="menu-title">Website Portfolio Elite</h3>
+                <p class="menu-desc">Tampilkan karya terbaik Anda dengan desain portfolio modern yang memukau. Cocok untuk kreator, fotografer, dan profesional.</p>
                 
-                <div class="account-form" id="form-1">
-                    <div class="form-group">
-                        <label for="login-1">Metode Login:</label>
-                        <select id="login-1" required>
-                            <option value="">Pilih...</option>
-                            <option value="google">Google</option>
-                            <option value="facebook">Facebook</option>
-                            <option value="twitter">Twitter</option>
-                            <option value="email">Email</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="bind-1">Status Bind:</label>
-                        <select id="bind-1" required>
-                            <option value="">Pilih...</option>
-                            <option value="on">ON</option>
-                            <option value="off">OFF</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="mines-1">Mines:</label>
-                        <input type="text" id="mines-1" placeholder="Contoh: SG2 Kayu, dll" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email-1">Email Akun:</label>
-                        <input type="email" id="email-1" placeholder="email@anda.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password-1">Password Akun:</label>
-                        <input type="text" id="password-1" placeholder="Password" required>
-                    </div>
-                    <button class="btn btn-submit" data-form="1">Kirim Pesanan</button>
+                <div class="features">
+                    <div class="feature-item">Desain Responsif & Mobile-Friendly</div>
+                    <div class="feature-item">Animasi Modern & Interaktif</div>
+                    <div class="feature-item">Gallery dengan Filter Kategori</div>
+                    <div class="feature-item">Integrasi Media Sosial</div>
+                    <div class="feature-item">Form Kontak Profesional</div>
+                </div>
+                
+                <div class="price-container">
+                    <span class="price">Rp 2.500.000</span>
+                    <button class="btn">Pesan Sekarang</button>
                 </div>
             </div>
         </div>
         
-        <!-- Layanan Website 2 -->
+        <!-- Layanan 2 -->
         <div class="menu-item">
-            <img src="https://via.placeholder.com/600x400/202124/EA4335?text=Website+Toko+Online" alt="Website Toko Online" class="menu-img">
+            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Website Perusahaan" class="menu-img">
             <div class="menu-content">
-                <h3 class="menu-title">Website Toko Online</h3>
-                <p class="menu-desc">Toko online lengkap dengan manajemen produk, sistem keranjang, integrasi pembayaran, dan dashboard admin.</p>
-                <span class="price">Rp 3.000.000</span>
-                <button class="btn btn-order" data-service="Website Toko Online">Pesan Sekarang</button>
+                <h3 class="menu-title">Website Perusahaan Premium</h3>
+                <p class="menu-desc">Hadirkan bisnis Anda secara profesional dengan website perusahaan yang elegan dan informatif.</p>
                 
-                <div class="account-form" id="form-2">
-                    <!-- Struktur form sama seperti di atas -->
+                <div class="features">
+                    <div class="feature-item">Halaman Profil Perusahaan</div>
+                    <div class="feature-item">Daftar Layanan/Produk</div>
+                    <div class="feature-item">Blog & News Section</div>
+                    <div class="feature-item">Google Maps Integration</div>
+                    <div class="feature-item">SEO Optimized</div>
+                </div>
+                
+                <div class="price-container">
+                    <span class="price">Rp 4.800.000</span>
+                    <button class="btn">Pesan Sekarang</button>
                 </div>
             </div>
         </div>
         
-        <!-- Layanan Website 3 -->
+        <!-- Layanan 3 -->
         <div class="menu-item">
-            <img src="https://via.placeholder.com/600x400/202124/34A853?text=Website+Bisnis" alt="Website Bisnis" class="menu-img">
+            <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Website Toko Online" class="menu-img">
             <div class="menu-content">
-                <h3 class="menu-title">Website Perusahaan</h3>
-                <p class="menu-desc">Website profesional untuk bisnis Anda dengan showcase layanan, form kontak, dan optimasi SEO.</p>
-                <span class="price">Rp 2.200.000</span>
-                <button class="btn btn-order" data-service="Website Perusahaan">Pesan Sekarang</button>
+                <h3 class="menu-title">Toko Online Eksklusif</h3>
+                <p class="menu-desc">Bangun toko online profesional dengan sistem manajemen produk dan pembayaran lengkap.</p>
                 
-                <div class="account-form" id="form-3">
-                    <!-- Struktur form sama seperti di atas -->
+                <div class="features">
+                    <div class="feature-item">Katalog Produk Lengkap</div>
+                    <div class="feature-item">Keranjang Belanja & Checkout</div>
+                    <div class="feature-item">Integrasi Pembayaran (Midtrans)</div>
+                    <div class="feature-item">Dashboard Admin</div>
+                    <div class="feature-item">Laporan Penjualan</div>
+                </div>
+                
+                <div class="price-container">
+                    <span class="price">Rp 6.500.000</span>
+                    <button class="btn">Pesan Sekarang</button>
                 </div>
             </div>
         </div>
         
-        <!-- Akun 1 -->
+        <!-- Layanan 4 -->
         <div class="menu-item">
-            <img src="https://via.placeholder.com/600x400/202124/F4B400?text=Akun+Netflix" alt="Akun Netflix Premium" class="menu-img">
+            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Website Restoran" class="menu-img">
             <div class="menu-content">
-                <h3 class="menu-title">Akun Netflix Premium</h3>
-                <p class="menu-desc">Akun Netflix Premium dengan 4K UHD, semua region terbuka, garansi 1 tahun.</p>
-                <span class="price">Rp 250.000</span>
-                <button class="btn btn-order" data-service="Akun Netflix Premium">Pesan Sekarang</button>
+                <h3 class="menu-title">Website Restoran Premium</h3>
+                <p class="menu-desc">Tampilkan menu restoran Anda dengan desain elegan dan fitur pemesanan online.</p>
                 
-                <div class="account-form" id="form-4">
-                    <!-- Struktur form sama seperti di atas -->
+                <div class="features">
+                    <div class="feature-item">Gallery Makanan High-Res</div>
+                    <div class="feature-item">Menu Digital Interaktif</div>
+                    <div class="feature-item">Sistem Reservasi Online</div>
+                    <div class="feature-item">Integrasi Delivery</div>
+                    <div class="feature-item">Google Reviews</div>
+                </div>
+                
+                <div class="price-container">
+                    <span class="price">Rp 3.800.000</span>
+                    <button class="btn">Pesan Sekarang</button>
                 </div>
             </div>
         </div>
         
-        <!-- Akun 2 -->
+        <!-- Layanan 5 -->
         <div class="menu-item">
-            <img src="https://via.placeholder.com/600x400/202124/EA4335?text=Akun+Spotify" alt="Akun Spotify Premium" class="menu-img">
+            <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Website Wedding" class="menu-img">
             <div class="menu-content">
-                <h3 class="menu-title">Spotify Premium Family</h3>
-                <p class="menu-desc">Spotify Premium Family dengan 6 slot, akses worldwide, garansi 6 bulan.</p>
-                <span class="price">Rp 180.000</span>
-                <button class="btn btn-order" data-service="Spotify Premium Family">Pesan Sekarang</button>
+                <h3 class="menu-title">Website Pernikahan Eksklusif</h3>
+                <p class="menu-desc">Buat momen spesial Anda lebih berkesan dengan website pernikahan yang romantis dan elegan.</p>
                 
-                <div class="account-form" id="form-5">
-                    <!-- Struktur form sama seperti di atas -->
+                <div class="features">
+                    <div class="feature-item">Gallery Foto Prewedding</div>
+                    <div class="feature-item">Countdown Timer</div>
+                    <div class="feature-item">RSVP Digital</div>
+                    <div class="feature-item">Lokasi & Peta Acara</div>
+                    <div class="feature-item">Amplop Digital</div>
+                </div>
+                
+                <div class="price-container">
+                    <span class="price">Rp 2.200.000</span>
+                    <button class="btn">Pesan Sekarang</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Layanan 6 -->
+        <div class="menu-item">
+            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Website Travel" class="menu-img">
+            <div class="menu-content">
+                <h3 class="menu-title">Website Travel & Tourism</h3>
+                <p class="menu-desc">Promosi paket wisata Anda dengan website yang memukau dan informatif.</p>
+                
+                <div class="features">
+                    <div class="feature-item">Gallery Destinasi Wisata</div>
+                    <div class="feature-item">Booking System</div>
+                    <div class="feature-item">Testimonial Section</div>
+                    <div class="feature-item">Blog Perjalanan</div>
+                    <div class="feature-item">Multi-language Support</div>
+                </div>
+                
+                <div class="price-container">
+                    <span class="price">Rp 5.200.000</span>
+                    <button class="btn">Pesan Sekarang</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Layanan 7 -->
+        <div class="menu-item">
+            <img src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Website Sekolah" class="menu-img">
+            <div class="menu-content">
+                <h3 class="menu-title">Website Institusi Pendidikan</h3>
+                <p class="menu-desc">Website profesional untuk sekolah, kampus, atau lembaga kursus dengan fitur lengkap.</p>
+                
+                <div class="features">
+                    <div class="feature-item">Profil Institusi</div>
+                    <div class="feature-item">Pendaftaran Online</div>
+                    <div class="feature-item">Portal Berita & Acara</div>
+                    <div class="feature-item">Gallery Kegiatan</div>
+                    <div class="feature-item">E-learning Integration</div>
+                </div>
+                
+                <div class="price-container">
+                    <span class="price">Rp 5.500.000</span>
+                    <button class="btn">Pesan Sekarang</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Layanan 8 -->
+        <div class="menu-item">
+            <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Website Personal Branding" class="menu-img">
+            <div class="menu-content">
+                <h3 class="menu-title">Personal Branding Website</h3>
+                <p class="menu-desc">Bangun personal brand Anda dengan website profesional yang mencerminkan kepribadian.</p>
+                
+                <div class="features">
+                    <div class="feature-item">Desain Custom Personal</div>
+                    <div class="feature-item">Bio & Pencapaian</div>
+                    <div class="feature-item">Media & Publikasi</div>
+                    <div class="feature-item">Testimonial Klien</div>
+                    <div class="feature-item">Booking Konsultasi</div>
+                </div>
+                
+                <div class="price-container">
+                    <span class="price">Rp 3.200.000</span>
+                    <button class="btn">Pesan Sekarang</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Layanan 9 -->
+        <div class="menu-item">
+            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Website Event" class="menu-img">
+            <div class="menu-content">
+                <h3 class="menu-title">Website Event Khusus</h3>
+                <p class="menu-desc">Promosikan event Anda dengan website yang menarik dan informatif.</p>
+                
+                <div class="features">
+                    <div class="feature-item">Countdown Timer</div>
+                    <div class="feature-item">Pendaftaran Online</div>
+                    <div class="feature-item">Jadwal Acara</div>
+                    <div class="feature-item">Sponsor Section</div>
+                    <div class="feature-item">Live Streaming Integration</div>
+                </div>
+                
+                <div class="price-container">
+                    <span class="price">Rp 2.800.000</span>
+                    <button class="btn">Pesan Sekarang</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Layanan 10 -->
+        <div class="menu-item">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Website Kreatif" class="menu-img">
+            <div class="menu-content">
+                <h3 class="menu-title">Website Kreatif Interaktif</h3>
+                <p class="menu-desc">Website dengan desain unik dan interaktif untuk kesan yang tak terlupakan.</p>
+                
+                <div class="features">
+                    <div class="feature-item">Desain Custom Unik</div>
+                    <div class="feature-item">Animasi High-End</div>
+                    <div class="feature-item">Interaksi Pengguna</div>
+                    <div class="feature-item">Efek Parallax</div>
+                    <div class="feature-item">3D Elements</div>
+                </div>
+                
+                <div class="price-container">
+                    <span class="price">Rp 7.500.000</span>
+                    <button class="btn">Pesan Sekarang</button>
                 </div>
             </div>
         </div>
     </div>
     
     <footer>
-        <p>© 2023 DevStore. Hak cipta dilindungi.</p>
+        <p>© 2023 WebCraft Pro. All Rights Reserved.</p>
     </footer>
 
     <script>
-        // Nomor WhatsApp Anda
-        const whatsappNumber = "085246691849";
-        
+        // Create particles background
         document.addEventListener('DOMContentLoaded', function() {
-            // Animasi untuk semua elemen menu
+            const particlesBg = document.getElementById('particles-bg');
+            
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size
+                const size = Math.random() * 10 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation duration
+                particle.style.animationDuration = `${Math.random() * 20 + 10}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                
+                particlesBg.appendChild(particle);
+            }
+            
+            // Add animation to menu items
             const menuItems = document.querySelectorAll('.menu-item');
             menuItems.forEach((item, index) => {
                 item.style.animationDelay = `${index * 0.1 + 0.1}s`;
             });
             
-            // Tombol Order
-            const orderButtons = document.querySelectorAll('.btn-order');
+            // WhatsApp integration
+            const whatsappNumber = "085246691849";
+            const orderButtons = document.querySelectorAll('.btn');
+            
             orderButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    const serviceName = this.getAttribute('data-service');
-                    const formId = this.parentElement.querySelector('.account-form').id;
-                    
-                    // Sembunyikan semua form dulu
-                    document.querySelectorAll('.account-form').forEach(form => {
-                        form.style.display = 'none';
-                    });
-                    
-                    // Tampilkan form yang dipilih
-                    const selectedForm = document.getElementById(formId);
-                    selectedForm.style.display = 'block';
-                    
-                    // Scroll ke form
-                    selectedForm.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                });
-            });
-            
-            // Tombol Submit
-            const submitButtons = document.querySelectorAll('.btn-submit');
-            submitButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const formId = this.getAttribute('data-form');
-                    const form = document.getElementById(`form-${formId}`);
-                    
-                    // Ambil semua nilai input
                     const serviceName = this.parentElement.parentElement.querySelector('.menu-title').textContent;
-                    const price = this.parentElement.parentElement.querySelector('.price').textContent;
-                    const loginMethod = document.getElementById(`login-${formId}`).value;
-                    const bindStatus = document.getElementById(`bind-${formId}`).value;
-                    const mines = document.getElementById(`mines-${formId}`).value;
-                    const email = document.getElementById(`email-${formId}`).value;
-                    const password = document.getElementById(`password-${formId}`).value;
+                    const price = this.parentElement.querySelector('.price').textContent;
                     
-                    // Validasi form
-                    if (!loginMethod || !bindStatus || !mines || !email || !password) {
-                        alert('Harap lengkapi semua data!');
-                        return;
-                    }
-                    
-                    // Format pesan WhatsApp
-                    const message = `Halo, saya ingin memesan:\n\n` +
-                                   `*Layanan:* ${serviceName}\n` +
-                                   `*Harga:* ${price}\n\n` +
-                                   `*Detail Akun:*\n` +
-                                   `Metode Login: ${loginMethod}\n` +
-                                   `Bind Status: ${bindStatus}\n` +
-                                   `Mines: ${mines}\n` +
-                                   `Email: ${email}\n` +
-                                   `Password: ${password}\n\n` +
-                                   `Silakan konfirmasi ketersediaan dan cara pembayaran. Terima kasih!`;
-                    
-                    // Encode untuk URL
+                    const message = `Halo, saya tertarik dengan layanan *${serviceName}* (${price}). Bisakah Anda memberikan informasi lebih detail?`;
                     const encodedMessage = encodeURIComponent(message);
                     
-                    // Redirect ke WhatsApp
                     window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
                 });
             });
-            
-            // Animasi background
-            const colors = ['#202124', '#1a1a2e', '#16213e', '#0f3460', '#1b1b2f'];
-            let current = 0;
-            
-            function changeBackground() {
-                document.body.style.background = `linear-gradient(-45deg, ${colors[current]}, ${colors[(current + 1) % colors.length]}, ${colors[(current + 2) % colors.length]}, ${colors[(current + 3) % colors.length]})`;
-                current = (current + 1) % colors.length;
-                setTimeout(changeBackground, 10000);
-            }
-            
-            setTimeout(changeBackground, 10000);
         });
     </script>
 </body>
