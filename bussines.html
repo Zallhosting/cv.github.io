@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevStore - Jasa Pembuatan Website & Akun Premium</title>
+    <style>
+        :root {
+            --primary: #4285F4; /* Biru Google */
+            --secondary: #EA4335; /* Merah Google */
+            --dark: #202124; /* Abu-abu gelap */
+            --light: #E8EAED; /* Abu-abu muda */
+            --accent: #34A853; /* Hijau */
+        }
+        
+        body {
+            font-family: 'Roboto', 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        .code-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(rgba(32, 33, 36, 0.9), rgba(32, 33, 36, 0.9)),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><text x="0" y="50" font-family="monospace" font-size="10" fill="rgba(234,67,53,0.05)">&lt;kode&gt;while(hidup) { koding(); }&lt;/kode&gt;</text></svg>');
+            z-index: -1;
+            animation: scrollCode 100s linear infinite;
+        }
+        
+        @keyframes scrollCode {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 1000px; }
+        }
+        
+        header {
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid rgba(234, 67, 53, 0.3);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            opacity: 0.8;
+            animation: fadeIn 2s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 0.8; transform: translateY(0); }
+        }
+        
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .menu-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(66, 133, 244, 0.2);
+            animation: slideUp 0.5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        @keyframes slideUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-5px) !important;
+            box-shadow: 0 15px 30px rgba(234, 67, 53, 0.2);
+            border-color: rgba(234, 67, 53, 0.5);
+        }
+        
+        .menu-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .menu-item:hover .menu-img {
+            transform: scale(1.05);
+        }
+        
+        .menu-content {
+            padding: 1.5rem;
+        }
+        
+        .menu-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: white;
+            font-weight: 500;
+        }
+        
+        .menu-desc {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+        
+        .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 14px rgba(66, 133, 244, 0.3);
+        }
+        
+        .account-form {
+            display: none;
+            margin-top: 1.5rem;
+            animation: fadeInForm 0.5s ease-out;
+        }
+        
+        @keyframes fadeInForm {
+            from { opacity: 0; height: 0; }
+            to { opacity: 1; height: auto; }
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 5px;
+            color: white;
+            font-family: inherit;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
+        }
+        
+        /* Animasi */
+        .menu-item:nth-child(1) { animation-delay: 0.1s; }
+        .menu-item:nth-child(2) { animation-delay: 0.3s; }
+        .menu-item:nth-child(3) { animation-delay: 0.5s; }
+        .menu-item:nth-child(4) { animation-delay: 0.7s; }
+        .menu-item:nth-child(5) { animation-delay: 0.9s; }
+        
+        /* Responsif */
+        @media (max-width: 768px) {
+            .menu-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Code+Pro&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="code-bg"></div>
+    
+    <header>
+        <div class="logo">DevStore</div>
+        <div class="tagline">Jasa Pembuatan Website Profesional & Akun Premium</div>
+    </header>
+    
+    <div class="menu-container">
+        <!-- Layanan Website 1 -->
+        <div class="menu-item">
+            <img src="https://via.placeholder.com/600x400/202124/4285F4?text=Website+Portfolio" alt="Website Portfolio" class="menu-img">
+            <div class="menu-content">
+                <h3 class="menu-title">Website Portfolio Profesional</h3>
+                <p class="menu-desc">Tampilkan karya Anda dengan website portfolio yang menakjubkan. Desain responsif, animasi custom, dan integrasi CMS.</p>
+                <span class="price">Rp 1.500.000</span>
+                <button class="btn btn-order" data-service="Website Portfolio Profesional">Pesan Sekarang</button>
+                
+                <div class="account-form" id="form-1">
+                    <div class="form-group">
+                        <label for="login-1">Metode Login:</label>
+                        <select id="login-1" required>
+                            <option value="">Pilih...</option>
+                            <option value="google">Google</option>
+                            <option value="facebook">Facebook</option>
+                            <option value="twitter">Twitter</option>
+                            <option value="email">Email</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="bind-1">Status Bind:</label>
+                        <select id="bind-1" required>
+                            <option value="">Pilih...</option>
+                            <option value="on">ON</option>
+                            <option value="off">OFF</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="mines-1">Mines:</label>
+                        <input type="text" id="mines-1" placeholder="Contoh: SG2 Kayu, dll" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email-1">Email Akun:</label>
+                        <input type="email" id="email-1" placeholder="email@anda.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password-1">Password Akun:</label>
+                        <input type="text" id="password-1" placeholder="Password" required>
+                    </div>
+                    <button class="btn btn-submit" data-form="1">Kirim Pesanan</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Layanan Website 2 -->
+        <div class="menu-item">
+            <img src="https://via.placeholder.com/600x400/202124/EA4335?text=Website+Toko+Online" alt="Website Toko Online" class="menu-img">
+            <div class="menu-content">
+                <h3 class="menu-title">Website Toko Online</h3>
+                <p class="menu-desc">Toko online lengkap dengan manajemen produk, sistem keranjang, integrasi pembayaran, dan dashboard admin.</p>
+                <span class="price">Rp 3.000.000</span>
+                <button class="btn btn-order" data-service="Website Toko Online">Pesan Sekarang</button>
+                
+                <div class="account-form" id="form-2">
+                    <!-- Struktur form sama seperti di atas -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Layanan Website 3 -->
+        <div class="menu-item">
+            <img src="https://via.placeholder.com/600x400/202124/34A853?text=Website+Bisnis" alt="Website Bisnis" class="menu-img">
+            <div class="menu-content">
+                <h3 class="menu-title">Website Perusahaan</h3>
+                <p class="menu-desc">Website profesional untuk bisnis Anda dengan showcase layanan, form kontak, dan optimasi SEO.</p>
+                <span class="price">Rp 2.200.000</span>
+                <button class="btn btn-order" data-service="Website Perusahaan">Pesan Sekarang</button>
+                
+                <div class="account-form" id="form-3">
+                    <!-- Struktur form sama seperti di atas -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Akun 1 -->
+        <div class="menu-item">
+            <img src="https://via.placeholder.com/600x400/202124/F4B400?text=Akun+Netflix" alt="Akun Netflix Premium" class="menu-img">
+            <div class="menu-content">
+                <h3 class="menu-title">Akun Netflix Premium</h3>
+                <p class="menu-desc">Akun Netflix Premium dengan 4K UHD, semua region terbuka, garansi 1 tahun.</p>
+                <span class="price">Rp 250.000</span>
+                <button class="btn btn-order" data-service="Akun Netflix Premium">Pesan Sekarang</button>
+                
+                <div class="account-form" id="form-4">
+                    <!-- Struktur form sama seperti di atas -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Akun 2 -->
+        <div class="menu-item">
+            <img src="https://via.placeholder.com/600x400/202124/EA4335?text=Akun+Spotify" alt="Akun Spotify Premium" class="menu-img">
+            <div class="menu-content">
+                <h3 class="menu-title">Spotify Premium Family</h3>
+                <p class="menu-desc">Spotify Premium Family dengan 6 slot, akses worldwide, garansi 6 bulan.</p>
+                <span class="price">Rp 180.000</span>
+                <button class="btn btn-order" data-service="Spotify Premium Family">Pesan Sekarang</button>
+                
+                <div class="account-form" id="form-5">
+                    <!-- Struktur form sama seperti di atas -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2023 DevStore. Hak cipta dilindungi.</p>
+    </footer>
+
+    <script>
+        // Nomor WhatsApp Anda
+        const whatsappNumber = "085246691849";
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animasi untuk semua elemen menu
+            const menuItems = document.querySelectorAll('.menu-item');
+            menuItems.forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.1 + 0.1}s`;
+            });
+            
+            // Tombol Order
+            const orderButtons = document.querySelectorAll('.btn-order');
+            orderButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const serviceName = this.getAttribute('data-service');
+                    const formId = this.parentElement.querySelector('.account-form').id;
+                    
+                    // Sembunyikan semua form dulu
+                    document.querySelectorAll('.account-form').forEach(form => {
+                        form.style.display = 'none';
+                    });
+                    
+                    // Tampilkan form yang dipilih
+                    const selectedForm = document.getElementById(formId);
+                    selectedForm.style.display = 'block';
+                    
+                    // Scroll ke form
+                    selectedForm.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                });
+            });
+            
+            // Tombol Submit
+            const submitButtons = document.querySelectorAll('.btn-submit');
+            submitButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const formId = this.getAttribute('data-form');
+                    const form = document.getElementById(`form-${formId}`);
+                    
+                    // Ambil semua nilai input
+                    const serviceName = this.parentElement.parentElement.querySelector('.menu-title').textContent;
+                    const price = this.parentElement.parentElement.querySelector('.price').textContent;
+                    const loginMethod = document.getElementById(`login-${formId}`).value;
+                    const bindStatus = document.getElementById(`bind-${formId}`).value;
+                    const mines = document.getElementById(`mines-${formId}`).value;
+                    const email = document.getElementById(`email-${formId}`).value;
+                    const password = document.getElementById(`password-${formId}`).value;
+                    
+                    // Validasi form
+                    if (!loginMethod || !bindStatus || !mines || !email || !password) {
+                        alert('Harap lengkapi semua data!');
+                        return;
+                    }
+                    
+                    // Format pesan WhatsApp
+                    const message = `Halo, saya ingin memesan:\n\n` +
+                                   `*Layanan:* ${serviceName}\n` +
+                                   `*Harga:* ${price}\n\n` +
+                                   `*Detail Akun:*\n` +
+                                   `Metode Login: ${loginMethod}\n` +
+                                   `Bind Status: ${bindStatus}\n` +
+                                   `Mines: ${mines}\n` +
+                                   `Email: ${email}\n` +
+                                   `Password: ${password}\n\n` +
+                                   `Silakan konfirmasi ketersediaan dan cara pembayaran. Terima kasih!`;
+                    
+                    // Encode untuk URL
+                    const encodedMessage = encodeURIComponent(message);
+                    
+                    // Redirect ke WhatsApp
+                    window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+                });
+            });
+            
+            // Animasi background
+            const colors = ['#202124', '#1a1a2e', '#16213e', '#0f3460', '#1b1b2f'];
+            let current = 0;
+            
+            function changeBackground() {
+                document.body.style.background = `linear-gradient(-45deg, ${colors[current]}, ${colors[(current + 1) % colors.length]}, ${colors[(current + 2) % colors.length]}, ${colors[(current + 3) % colors.length]})`;
+                current = (current + 1) % colors.length;
+                setTimeout(changeBackground, 10000);
+            }
+            
+            setTimeout(changeBackground, 10000);
+        });
+    </script>
+</body>
+</html>
